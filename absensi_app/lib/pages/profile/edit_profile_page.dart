@@ -35,6 +35,10 @@ class _EditProfilePageState extends State<EditProfilePage> {
       showErrorToast("Semua field harus diisi.");
       return;
     }
+    if (!isValidEmail(newEmail)) {
+      showErrorToast("Format email tidak valid.");
+      return;
+    }
 
     final updatedUser = UserModel(
       id: widget.user.id,

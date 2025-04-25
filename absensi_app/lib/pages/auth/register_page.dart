@@ -29,6 +29,11 @@ class _RegisterPageState extends State<RegisterPage> {
       return;
     }
 
+    if (!isValidEmail(email)) {
+      showErrorToast("Format email tidak valid.");
+      return;
+    }
+
     final success = await AuthService.registerUser(name, email, password);
     if (success) {
       showToast('Akun berhasil dibuat, silahkan login');
