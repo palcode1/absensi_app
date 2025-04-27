@@ -1,7 +1,6 @@
 import 'package:absensi_app/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:absensi_app/services/auth_service.dart';
-// import 'package:absensi_app/utils/messages.dart';
 import 'package:absensi_app/widgets/input_field.dart';
 import 'package:absensi_app/widgets/custom_button.dart';
 import 'package:absensi_app/utils/helper.dart';
@@ -36,13 +35,17 @@ class _RegisterPageState extends State<RegisterPage> {
 
     final success = await AuthService.registerUser(name, email, password);
     if (success) {
-      showToast('Akun berhasil dibuat, silahkan login');
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (_) => const LoginPage()),
-      );
+      if (mounted) {
+        showToast('Akun berhasil dibuat, silahkan login');
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (_) => const LoginPage()),
+        );
+      }
     } else {
-      showErrorToast("Email sudah digunakan.");
+      if (mounted) {
+        showErrorToast("Email sudah digunakan.");
+      }
     }
   }
 

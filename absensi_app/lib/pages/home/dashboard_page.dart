@@ -30,6 +30,7 @@ class _DashboardPageState extends State<DashboardPage> {
   Position? _currentPosition;
   late Timer _timer;
   bool isCheckedIn = false;
+  bool isCheckedOut = false;
 
   // Titik lokasi kantor
   final LatLng attendancePoint = const LatLng(-6.21087, 106.81298);
@@ -51,6 +52,7 @@ class _DashboardPageState extends State<DashboardPage> {
 
   void _updateTime() {
     final now = DateTime.now();
+    if (!mounted) return;
     setState(() {
       _currentDate = DateFormat("EEEE, dd-MM-yyyy", "id_ID").format(now);
       _currentTime = DateFormat("HH:mm:ss").format(now);
@@ -61,7 +63,7 @@ class _DashboardPageState extends State<DashboardPage> {
     final uid = await SharedPrefService.getUID();
     if (uid != null) {
       final user = await DBService.getUserByUID(uid);
-      if (mounted && user != null) {
+      if (user != null && mounted) {
         setState(() {
           name = user.name;
         });
@@ -78,12 +80,15 @@ class _DashboardPageState extends State<DashboardPage> {
       }
       final pos = await LocationService.getCurrentLocation();
       final addr = await LocationService.getAddress(pos);
+      if (!mounted) return;
       setState(() {
         _currentPosition = pos;
         _currentAddress = addr;
       });
     } catch (e) {
-      showErrorToast("Gagal mendapatkan lokasi: $e");
+      if (mounted) {
+        showErrorToast("Gagal mendapatkan lokasi: $e");
+      }
     }
   }
 
@@ -99,7 +104,9 @@ class _DashboardPageState extends State<DashboardPage> {
       attendancePoint.longitude,
     );
     if (distance > maxDistance) {
-      showErrorToast("Kamu berada di luar jangkauan absen.");
+      if (mounted) {
+        showErrorToast("Kamu berada di luar jangkauan absen.");
+      }
       return;
     }
 
@@ -113,6 +120,7 @@ class _DashboardPageState extends State<DashboardPage> {
     );
 
     final id = await AbsensiService.checkIn(absensi);
+    if (!mounted) return;
     setState(() {
       showSuccessToast('Kamu berhasil check-in pada ${absensi.checkIn}');
       isCheckedIn = true;
@@ -122,18 +130,39 @@ class _DashboardPageState extends State<DashboardPage> {
 
   Future<void> _handleCheckOut() async {
     if (_lastAbsensiId == null) return;
-    // Simulasi update checkout, real-nya harus ambil ID absensi terbaru
-    final now = DateTime.now();
-    final checkOut = DateFormat("HH:mm:ss").format(now);
 
-    await AbsensiService.checkOut(_lastAbsensiId!, checkOut);
-    // TODO: simpan ID absensi saat check-in, lalu update jamCheckOut
-    showSuccessToast("Kamu berhasil check-out pada $checkOut");
-    Navigator.pushAndRemoveUntil(
-      context,
-      MaterialPageRoute(builder: (_) => MainNavigationPage(initialIndex: 1)),
-      (route) => false,
-    );
+    final uid = await SharedPrefService.getUID();
+    if (uid == null) return;
+
+    final todayAbsensi = await AbsensiService.getTodayAbsensi(uid);
+
+    if (todayAbsensi != null) {
+      if (todayAbsensi.checkOut == null) {
+        // ✅ Belum check-out → Simpan jam check-out
+        final now = DateTime.now();
+        final checkOut = DateFormat("HH:mm:ss").format(now);
+
+        await AbsensiService.checkOut(_lastAbsensiId!, checkOut);
+        if (mounted) {
+          showSuccessToast("Kamu berhasil check-out pada $checkOut");
+        }
+      } else {
+        // ✅ Sudah check-out → Tampilkan toast "Kamu sudah Check-Out hari ini"
+        if (mounted) {
+          showSuccessToast("Kamu sudah Check-Out hari ini");
+        }
+      }
+    }
+
+    // ✅ Apapun kondisinya, langsung ke halaman History
+    if (mounted) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (_) => const MainNavigationPage(initialIndex: 1),
+        ),
+      );
+    }
   }
 
   Future<void> checkTodayAbsensi() async {
@@ -147,6 +176,7 @@ class _DashboardPageState extends State<DashboardPage> {
         allAbsensi.where((absen) => absen.tanggal == today).toList();
     if (absensiHariIniList.isNotEmpty) {
       final absensiHariIni = absensiHariIniList.first;
+      if (!mounted) return;
       setState(() {
         isCheckedIn = true;
         _lastAbsensiId = absensiHariIni.id;

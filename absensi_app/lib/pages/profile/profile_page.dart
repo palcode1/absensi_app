@@ -29,7 +29,7 @@ class _ProfilePageState extends State<ProfilePage> {
     if (uid == null) return;
 
     final user = await DBService.getUserByUID(uid);
-    if (user != null) {
+    if (user != null && mounted) {
       setState(() => _user = user);
     }
   }

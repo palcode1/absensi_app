@@ -32,11 +32,11 @@ class _EditProfilePageState extends State<EditProfilePage> {
     final newEmail = _emailController.text.trim();
 
     if (newName.isEmpty || newEmail.isEmpty) {
-      showErrorToast("Semua field harus diisi.");
+      if (mounted) showErrorToast("Semua field harus diisi.");
       return;
     }
     if (!isValidEmail(newEmail)) {
-      showErrorToast("Format email tidak valid.");
+      if (mounted) showErrorToast("Format email tidak valid.");
       return;
     }
 
@@ -49,10 +49,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
     );
 
     await DBService.updateUser(updatedUser);
-
-    showSuccessToast("Data berhasil diperbarui!");
-
     if (mounted) {
+      showSuccessToast("Data berhasil diperbarui!");
       Navigator.pop(context, true); // kembali ke profile
     }
   }

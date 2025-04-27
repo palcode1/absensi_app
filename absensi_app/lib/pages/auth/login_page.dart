@@ -29,13 +29,17 @@ class _LoginPageState extends State<LoginPage> {
 
     final success = await AuthService.loginUser(email, password);
     if (success) {
-      showSuccessToast("Halo, Selamat datang");
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (_) => MainNavigationPage()),
-      );
+      if (mounted) {
+        showSuccessToast("Halo, Selamat datang");
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (_) => MainNavigationPage()),
+        );
+      }
     } else {
-      showErrorToast("Email atau password salah.");
+      if (mounted) {
+        showErrorToast("Email atau password salah.");
+      }
     }
   }
 

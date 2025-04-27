@@ -28,6 +28,7 @@ class _HistoryPageState extends State<HistoryPage> {
     final uid = await SharedPrefService.getUID();
     if (uid != null) {
       final data = await AbsensiService.getAbsensiUser(uid);
+      if (!mounted) return;
       setState(() {
         _historyList = data;
         isLoading = false;

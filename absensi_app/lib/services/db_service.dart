@@ -98,6 +98,23 @@ class DBService {
     return result.map((map) => AbsensiModel.fromMap(map)).toList();
   }
 
+  static Future<AbsensiModel?> getTodayAbsensiByUID(
+    String uid,
+    String tanggal,
+  ) async {
+    final db = await initDB();
+    final result = await db.query(
+      'absensi',
+      where: 'uid = ? AND tanggal = ?',
+      whereArgs: [uid, tanggal],
+    );
+
+    if (result.isNotEmpty) {
+      return AbsensiModel.fromMap(result.first);
+    }
+    return null;
+  }
+
   static Future<int> updateCheckOut(int id, String checkOut) async {
     final db = await initDB();
     return await db.update(
