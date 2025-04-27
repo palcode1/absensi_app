@@ -52,6 +52,8 @@ flutter_launcher_icons:
   ios: true
   image_path: "assets/images/in_out_logo.png"
   min_sdk_android: 21 # android min sdk min:16, default 21
+  background_color: "#FFE8B6"
+  adaptive_icon_background: "#FFE8B6"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
