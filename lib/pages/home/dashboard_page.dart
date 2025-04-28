@@ -35,7 +35,7 @@ class _DashboardPageState extends State<DashboardPage> {
   // Titik lokasi kantor
   late GoogleMapController mapController;
   final LatLng attendancePoint = const LatLng(-6.21087, 106.81298);
-  static const double maxDistance = 15.0; // meter
+  static const double maxDistance = 50.0; // meter
 
   @override
   void initState() {
@@ -297,7 +297,7 @@ class _DashboardPageState extends State<DashboardPage> {
                                   Circle(
                                     circleId: const CircleId('absen-radius'),
                                     center: attendancePoint,
-                                    radius: 20.0,
+                                    radius: 50.0,
                                     fillColor: Colors.red.withOpacity(0.2),
                                     strokeColor: Colors.red,
                                     strokeWidth: 1,
