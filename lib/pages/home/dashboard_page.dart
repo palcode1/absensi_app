@@ -219,11 +219,6 @@ class _DashboardPageState extends State<DashboardPage> {
                     ),
                   ],
                 ),
-                const CircleAvatar(
-                  radius: 20,
-                  backgroundColor: Colors.white,
-                  child: Icon(Icons.person, color: AppColors.greenDark),
-                ),
               ],
             ),
           ),
