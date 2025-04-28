@@ -36,7 +36,7 @@ class _RegisterPageState extends State<RegisterPage> {
     final success = await AuthService.registerUser(name, email, password);
     if (success) {
       if (mounted) {
-        showToast('Akun berhasil dibuat, silahkan login');
+        showSuccessToast('Akun berhasil dibuat, silahkan login');
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (_) => const LoginPage()),
