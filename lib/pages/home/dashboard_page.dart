@@ -33,6 +33,7 @@ class _DashboardPageState extends State<DashboardPage> {
   bool isCheckedOut = false;
 
   // Titik lokasi kantor
+  late GoogleMapController mapController;
   final LatLng attendancePoint = const LatLng(-6.21087, 106.81298);
   static const double maxDistance = 15.0; // meter
 
@@ -269,6 +270,10 @@ class _DashboardPageState extends State<DashboardPage> {
                                   ),
                                   zoom: 19,
                                 ),
+                                myLocationEnabled: true,
+                                onMapCreated: (GoogleMapController controller) {
+                                  mapController = controller;
+                                },
                                 markers: {
                                   Marker(
                                     markerId: const MarkerId("user"),
