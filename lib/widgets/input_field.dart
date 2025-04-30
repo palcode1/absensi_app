@@ -5,12 +5,14 @@ class CustomTextField extends StatelessWidget {
   final TextEditingController controller;
   final bool obscureText;
   final TextInputType keyboardType;
+  final InputDecoration? decoration;
 
   const CustomTextField({
     super.key,
     required this.controller,
     this.obscureText = false,
     this.keyboardType = TextInputType.text,
+    this.decoration,
   });
 
   @override
