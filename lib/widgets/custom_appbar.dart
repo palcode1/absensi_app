@@ -13,7 +13,7 @@ class CustomAppBar extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.symmetric(
         horizontal: AppConstants.defaultPadding,
-        vertical: 10,
+        vertical: 15,
       ),
       decoration: BoxDecoration(
         color: AppColors.greenDark,

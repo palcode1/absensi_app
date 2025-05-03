@@ -58,7 +58,7 @@ class _RegisterPageState extends State<RegisterPage> {
           children: [
             // Top curved container with illustration
             Container(
-              height: MediaQuery.of(context).size.height * 0.30,
+              height: MediaQuery.of(context).size.height * 0.25,
               width: double.infinity,
               decoration: BoxDecoration(
                 color: AppColors.yellowSoft,
@@ -78,18 +78,9 @@ class _RegisterPageState extends State<RegisterPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
-                    'assets/images/absen_logo.png',
-                    height: 120,
+                    'assets/images/in_out_logo.png',
+                    height: 150,
                     fit: BoxFit.contain,
-                  ),
-                  SizedBox(height: 16),
-                  Text(
-                    'Create Account',
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.greenDark,
-                    ),
                   ),
                 ],
               ),

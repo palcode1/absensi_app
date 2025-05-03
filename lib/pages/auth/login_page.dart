@@ -52,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
           children: [
             // Top curved container with illustration
             Container(
-              height: MediaQuery.of(context).size.height * 0.40,
+              height: MediaQuery.of(context).size.height * 0.35,
               width: double.infinity,
               decoration: BoxDecoration(
                 color: AppColors.yellowSoft,
@@ -72,18 +72,9 @@ class _LoginPageState extends State<LoginPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
-                    'assets/images/absen_logo.png',
-                    height: 180,
+                    'assets/images/in_out_logo.png',
+                    height: 250,
                     fit: BoxFit.contain,
-                  ),
-                  SizedBox(height: 20),
-                  Text(
-                    'In-Out App',
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.greenDark,
-                    ),
                   ),
                 ],
               ),
