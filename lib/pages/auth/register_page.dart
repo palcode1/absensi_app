@@ -108,135 +108,33 @@ class _RegisterPageState extends State<RegisterPage> {
                   SizedBox(height: 20),
 
                   // Name Field
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade100,
-                      borderRadius: BorderRadius.circular(12),
+                  CustomTextField(
+                    controller: _nameController,
+                    prefixIcon: Icon(
+                      Icons.person_outline,
+                      color: AppColors.greenDark,
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(
-                              top: 12.0,
-                              bottom: 4.0,
-                            ),
-                            child: Text(
-                              "Nama",
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.black54,
-                              ),
-                            ),
-                          ),
-                          CustomTextField(
-                            controller: _nameController,
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-                              hintText: "Masukkan nama lengkap",
-                              hintStyle: TextStyle(color: Colors.grey),
-                              prefixIcon: Icon(
-                                Icons.person_outline,
-                                color: AppColors.greenDark,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                    hintText: "Masukkan Nama Lengkap",
                   ),
 
-                  SizedBox(height: 16),
-
-                  // Email Field
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade100,
-                      borderRadius: BorderRadius.circular(12),
+                  CustomTextField(
+                    controller: _emailController,
+                    keyboardType: TextInputType.emailAddress,
+                    prefixIcon: Icon(
+                      Icons.email_outlined,
+                      color: AppColors.greenDark,
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(
-                              top: 12.0,
-                              bottom: 4.0,
-                            ),
-                            child: Text(
-                              "Email",
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.black54,
-                              ),
-                            ),
-                          ),
-                          CustomTextField(
-                            controller: _emailController,
-                            keyboardType: TextInputType.emailAddress,
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-                              hintText: "Masukkan email",
-                              hintStyle: TextStyle(color: Colors.grey),
-                              prefixIcon: Icon(
-                                Icons.email_outlined,
-                                color: AppColors.greenDark,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                    hintText: "Masukkan Email",
                   ),
 
-                  SizedBox(height: 16),
-
-                  // Password Field
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade100,
-                      borderRadius: BorderRadius.circular(12),
+                  CustomTextField(
+                    controller: _passwordController,
+                    obscureText: true,
+                    prefixIcon: Icon(
+                      Icons.lock_outline,
+                      color: AppColors.greenDark,
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(
-                              top: 12.0,
-                              bottom: 4.0,
-                            ),
-                            child: Text(
-                              "Password",
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.black54,
-                              ),
-                            ),
-                          ),
-                          CustomTextField(
-                            controller: _passwordController,
-                            obscureText: true,
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-                              hintText: "Masukkan password",
-                              hintStyle: TextStyle(color: Colors.grey),
-                              prefixIcon: Icon(
-                                Icons.lock_outline,
-                                color: AppColors.greenDark,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                    hintText: "Masukkan Password",
                   ),
 
                   SizedBox(height: 24),

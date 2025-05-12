@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:absensi_app/services/shared_pref_service.dart';
 import 'package:absensi_app/pages/auth/login_page.dart';
+import 'package:absensi_app/pages/splash_screen.dart';
 import 'package:absensi_app/pages/home/dashboard_page.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:absensi_app/pages/main_navigation/main_navigation_page.dart';
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: const InitialPage(), // Halaman pemutus awal
+      home: const SplashScreen(), // Halaman pemutus awal
     );
   }
 }
