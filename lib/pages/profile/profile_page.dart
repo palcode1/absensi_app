@@ -432,7 +432,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             const SizedBox(height: 60),
                             // App Info
                             Text(
-                              "In-Out App",
+                              "inOut!n",
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.bold,

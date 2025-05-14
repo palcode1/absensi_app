@@ -58,7 +58,7 @@ class _RegisterPageState extends State<RegisterPage> {
           children: [
             // Top curved container with illustration
             Container(
-              height: MediaQuery.of(context).size.height * 0.25,
+              height: MediaQuery.of(context).size.height * 0.30,
               width: double.infinity,
               decoration: BoxDecoration(
                 color: AppColors.yellowSoft,
@@ -78,8 +78,8 @@ class _RegisterPageState extends State<RegisterPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
-                    'assets/images/in_out_logo.png',
-                    height: 150,
+                    'assets/images/inoutin_logo.png',
+                    height: 250,
                     fit: BoxFit.contain,
                   ),
                 ],

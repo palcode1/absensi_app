@@ -50,14 +50,14 @@ dev_dependencies:
 
 flutter_native_splash:
   color: "#FFF8DC"
-  image: assets/images/in_out_logo.png
+  image: assets/images/inoutin_logo.png
   android: true
   ios: true
 
 flutter_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/images/in_out_logo.png"
+  image_path: "assets/images/inoutin_logo.png"
   min_sdk_android: 21 # android min sdk min:16, default 21
   background_color: "#FFE8B6"
   adaptive_icon_background: "#FFE8B6"

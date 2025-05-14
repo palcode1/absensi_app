@@ -518,7 +518,10 @@ class _HistoryPageState extends State<HistoryPage> {
       final parsedDate = DateTime.parse(
         rawDate,
       ); // pastikan format 'yyyy-MM-dd'
-      return DateFormat('dd-MM-yyyy').format(parsedDate); // hasil: 25-04-2025
+      return DateFormat(
+        'dd MMMM yyyy',
+        'id_ID',
+      ).format(parsedDate); // hasil: 25-04-2025
     } catch (e) {
       return rawDate;
     }

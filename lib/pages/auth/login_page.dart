@@ -52,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
           children: [
             // Top curved container with illustration
             Container(
-              height: MediaQuery.of(context).size.height * 0.35,
+              height: MediaQuery.of(context).size.height * 0.30,
               width: double.infinity,
               decoration: BoxDecoration(
                 color: AppColors.yellowSoft,
@@ -72,7 +72,7 @@ class _LoginPageState extends State<LoginPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
-                    'assets/images/in_out_logo.png',
+                    'assets/images/inoutin_logo.png',
                     height: 250,
                     fit: BoxFit.contain,
                   ),

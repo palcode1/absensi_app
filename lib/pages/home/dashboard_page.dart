@@ -60,7 +60,7 @@ class _DashboardPageState extends State<DashboardPage> {
     final now = DateTime.now();
     if (!mounted) return;
     setState(() {
-      _currentDate = DateFormat("EEEE, dd-MM-yyyy", "id_ID").format(now);
+      _currentDate = DateFormat("EEEE, dd MMMM yyyy", "id_ID").format(now);
       _currentTime = DateFormat("HH:mm:ss a").format(now);
     });
   }
@@ -163,7 +163,8 @@ class _DashboardPageState extends State<DashboardPage> {
           attendancePoint.latitude,
           attendancePoint.longitude,
         );
-        if (distance > maxDistance) {
+        if (distance < maxDistance) {
+          // "<" bisa absen dimana pun, ">" harus absen di jangkauan titik absen
           if (mounted) {
             showErrorToast("Kamu berada di luar jangkauan absen.");
           }
